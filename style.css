@@ -1,0 +1,184 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Nunito', sans-serif;
+  overflow-x: hidden;
+  height: 100%;
+  background-color: transparent;
+}
+
+/* VIDEO FULL SCREEN + E PASTER */
+.video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.video-background video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: -1;
+  pointer-events: none;
+  filter: none;
+}
+
+#loader {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  color: white;
+  font-size: 2em;
+}
+
+#progress {
+  height: 6px;
+  width: 0%;
+  background: pink;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transition: width 5s;
+}
+
+.lang-switch, .menu {
+  position: absolute;
+  top: 1em;
+  font-size: 0.9em;
+}
+
+.lang-switch {
+  left: 1em;
+}
+
+.menu {
+  right: 1em;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 2.9em;
+}
+
+.hero {
+  text-align: center;
+  padding: 3em 1em;
+  background: transparent;
+}
+
+.hero img {
+  width: 220px;
+}
+
+.btn-main {
+  background: linear-gradient(to right, #ff69b4, #d26cc0);
+  color: white;
+  border: none;
+  padding: 0.7em 2em;
+  font-size: 1em;
+  border-radius: 30px;
+  cursor: pointer;
+  margin-top: 1em;
+  transition: all 0.3s ease;
+}
+
+.btn-main:active {
+  transform: scale(0.95);
+  background: linear-gradient(to left, #ff69b4, #d26cc0);
+}
+
+.products {
+  background: rgba(0,0,0,0.5);
+  color: white;
+  text-align: center;
+  padding: 3em 1em;
+}
+
+.products h2 {
+  font-size: 2em;
+  margin-bottom: 1em;
+}
+
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2em;
+}
+
+.product {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 1em;
+  border-radius: 20px;
+  width: 180px;
+}
+
+.product img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.product button {
+  margin-top: 0.5em;
+  background: #ff69b4;
+  color: white;
+  border: none;
+  padding: 0.5em 1em;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.section {
+  padding: 2em;
+  color: white;
+  background: rgba(0,0,0,0.5);
+  text-align: center;
+}
+
+.contact-links a {
+  display: block;
+  margin: 0.5em auto;
+  background: #ff69b4;
+  color: white;
+  padding: 0.7em;
+  border-radius: 10px;
+  width: fit-content;
+  text-decoration: none;
+}
+.caption {
+  font-family: 'Nunito', sans-serif;
+  font-size: 26px;
+  color: GREEN;
+  margin-top: 0.5em;
+  font-weight: 700;
+  text-align: center; /* Qendra e tekstit */
+}
+.flags {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
+}
+
+.logo {
+  text-align: center;
+  margin-top: 60px; /* Shtyn logon poshtë flamujve */
+  font-size: 24px;
+  color: white;
+}

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Handmade ♡ Dina</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;700&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Nunito', sans-serif;
+      background: transparent;
+      overflow-x: hidden;
+      height: 100%;
+    }
+    .video-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      overflow: hidden;
+    }
+    .video-background video {
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+    }
+    #loader {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: black;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      color: white;
+      font-size: 2em;
+    }
+    #loader span {
+      margin-bottom: 0.5em;
+    }
+    #progress {
+      height: 3px;
+      width: 0%;
+      background: pink;
+      position: relative;
+      transition: width 2s;
+    }
+    header {
+      background: rgba(0,0,0,0.6);
+      color: white;
+      text-align: center;
+      padding: 1em 0;
+      position: relative;
+    }
+    .lang-switch, .menu {
+      position: absolute;
+      top: 1em;
+      font-size: 0.9em;
+    }
+    .lang-switch { left: 1em; }
+    .menu { right: 1em; }
+    .logo {
+      font-weight: bold;
+      font-size: 1.3em;
+    }
+    .hero {
+      text-align: center;
+      padding: 3em 1em;
+      background: transparent;
+      color: white;
+    }
+    .hero img {
+      width: 220px;
+    }
+    .btn-main {
+      background: linear-gradient(to right, #ff69b4, #d26cc0);
+      color: white;
+      border: none;
+      padding: 0.7em 2em;
+      font-size: 1em;
+      border-radius: 30px;
+      cursor: pointer;
+      margin-top: 1em;
+      transition: all 0.3s ease;
+    }
+    .btn-main:active {
+      transform: scale(0.95);
+      background: linear-gradient(to left, #ff69b4, #d26cc0);
+    }
+    .products {
+      background: transparent;
+      color: white;
+      text-align: center;
+      padding: 3em 1em;
+    }
+    .products h2 span {
+      display: none;
+    }
+    .products h2 span[data-lang="sq"] {
+      display: inline;
+    }
+    .product-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2em;
+    }
+    .product {
+      background: rgba(0, 0, 0, 0.4);
+      padding: 1em;
+      border-radius: 20px;
+      width: 180px;
+    }
+    .product img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .product button {
+      margin-top: 0.5em;
+      background: #ff69b4;
+      color: white;
+      border: none;
+      padding: 0.5em 1em;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+    .section {
+      padding: 2em;
+      color: white;
+      background: transparent;
+      text-align: center;
+    }
+    .section h2 span {
+      display: none;
+    }
+    .section h2 span[data-lang="sq"] {
+      display: inline;
+    }
+    .contact-links a {
+      display: block;
+      margin: 0.5em auto;
+      background: #ff69b4;
+      color: white;
+      padding: 0.7em;
+      border-radius: 10px;
+      width: fit-content;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="video-background">
+    <video autoplay muted loop playsinline>
+      <source src="https://ik.imagekit.io/n391s3pmq/IMG_7943.MP4?tr=orig&updatedAt=1753557838168" type="video/mp4">
+      Pajisja juaj nuk e përkrah këtë video.
+    </video>
+  </div>
+
+  <div id="loader">
+    <span>WELCOME</span>
+    <div id="progress"></div>
+  </div>
+
+  <header>
+    <div class="lang-switch">
+      <button onclick="setLang('sq')">AL</button>
+      <button onclick="setLang('en')">EN</button>
+      <button onclick="setLang('de')">DE</button>
+    </div>
+    <div class="logo">HANDMADE ♡ DINA</div>
+  </header>
+
+  <div class="hero">
+    <img src="https://i.imgur.com/bM4pzq9.png" alt="Kukulla per femije" />
+    <br />
+    <button class="btn-main" onclick="showProducts()">
+      <span data-lang="sq">BLEJ TANI</span>
+      <span data-lang="en">BUY NOW</span>
+      <span data-lang="de">JETZT KAUFEN</span>
+    </button>
+  </div>
+
+  <div class="products" id="products" style="display:none">
+    <h2>
+      <span data-lang="sq">PRODUKTET TONA</span>
+      <span data-lang="en">OUR PRODUCTS</span>
+      <span data-lang="de">UNSERE PRODUKTE</span>
+    </h2>
+    <div class="product-grid">
+
+      <!-- Produkt 1 -->
+      <div class="product">
+        <img src="https://i.imgur.com/VsNj1up.jpeg" alt="Batanije me buqetë trëndafilash" />
+        <p><span data-lang="sq">Batanije me buqetë trëndafilash</span><span data-lang="en">Rose bouquet blanket</span><span data-lang="de">Decke mit Rosenstrauß</span></p>
+        <p>100€</p>
+        <button onclick="orderWhatsApp('Batanije me buqetë trëndafilash', 'https://i.imgur.com/VsNj1up.jpeg')">
+          <span data-lang="sq">POROSIT TANI</span>
+          <span data-lang="en">ORDER NOW</span>
+          <span data-lang="de">JETZT BESTELLEN</span>
+        </button>
+      </div>
+
+      <!-- Produkt 2 -->
+      <div class="product">
+        <img src="https://i.imgur.com/oGY2qvL.jpeg" alt="Set familjar i punuar me dorë" />
+        <p><span data-lang="sq">Set familjar i punuar me dorë</span><span data-lang="en">Handmade family set</span><span data-lang="de">Handgemachtes Familien-Set</span></p>
+        <p>53€</p>
+        <button onclick="orderWhatsApp('Set familjar i punuar me dorë', 'https://i.imgur.com/oGY2qvL.jpeg')">
+          <span data-lang="sq">POROSIT TANI</span>
+          <span data-lang="en">ORDER NOW</span>
+          <span data-lang="de">JETZT BESTELLEN</span>
+        </button>
+      </div>
+
+      <!-- Produkt 3 -->
+      <div class="product">
+        <img src="https://i.imgur.com/kE17kHH.jpeg" alt="kukulla per qift-1" />
+        <p><span data-lang="sq">kukulla per qift-1</span><span data-lang="en">Couple doll-1</span><span data-lang="de">Paar-Puppe-1</span></p>
+        <p>40€</p>
+        <button onclick="orderWhatsApp('kukulla per qift-1', 'https://i.imgur.com/kE17kHH.jpeg')">
+          <span data-lang="sq">POROSIT TANI</span>
+          <span data-lang="en">ORDER NOW</span>
+          <span data-lang="de">JETZT BESTELLEN</span>
+        </button>
+      </div>
+
+      <!-- Produkt 4 -->
+      <div class="product">
+        <img src="https://i.imgur.com/wnNXCDx.jpeg" alt="kukulla per qift-2" />
+        <p><span data-lang="sq">kukulla per qift-2</span><span data-lang="en">Couple doll-2</span><span data-lang="de">Paar-Puppe-2</span></p>
+        <p>40€</p>
+        <button onclick="orderWhatsApp('kukulla per qift-2', 'https://i.imgur.com/wnNXCDx.jpeg')">
+          <span data-lang="sq">POROSIT TANI</span>
+          <span data-lang="en">ORDER NOW</span>
+          <span data-lang="de">JETZT BESTELLEN</span>
+        </button>
+      </div>
+
+      <!-- Produkt 5 -->
+      <div class="product">
+        <img src="https://i.imgur.com/8FOnz9i.jpeg" alt="kukulla me hixhab te zi" />
+        <p><span data-lang="sq">kukulla me hixhab te zi</span><span data-lang="en">Doll with black hijab</span><span data-lang="de">Puppe mit schwarzem Hijab</span></p>
+        <p>20€</p>
+        <button onclick="orderWhatsApp('kukulla me hixhab te zi', 'https://i.imgur.com/8FOnz9i.jpeg')">
+          <span data-lang="sq">POROSIT TANI</span>
+          <span data-lang="en">ORDER NOW</span>
+          <span data-lang="de">JETZT BESTELLEN</span>
+        </button>
+      </div>
+
+      <!-- Produkt 6 -->
+      <div class="product">
+        <img src="https://i.imgur.com/oXDV7PL.jpeg" alt="kukulla me hixhab te vjollc" />
+        <p><span data-lang="sq">kukulla me hixhab te vjollc</span><span data-lang="en">doll with purple hijab</span><span data-lang="de">Puppe mit violettem Hijab</span></p>
+        <p>20€</p>
+        <button onclick="orderWhatsApp('kukulla me hixhab te vjollc', 'https://i.imgur.com/oXDV7PL.jpeg')">
+          <span data-lang="sq">POROSIT TANI</span>
+          <span data-lang="en">ORDER NOW</span>
+          <span data-lang="de">JETZT BESTELLEN</span>
+        </button>
+      </div>
+
+      <!-- Produkt 7 -->
+      <div class="product">
+        <img src="https://i.imgur.com/Myr3q5x.jpeg" alt="lepuroshja" />
+        <p><span data-lang="sq">lepuroshja</span><span data-lang="en">rabbit</span><span data-lang="de">Kaninchen</span></p>
+        <p>25€</p>
+        <button onclick="orderWhatsApp('lepuroshja', 'https://i.imgur.com/Myr3q5x.jpeg')">
+          <span data-lang="sq">POROSIT TANI</span>
+          <span data-lang="en">ORDER NOW</span>
+          <span data-lang="de">JETZT BESTELLEN</span>
+        </button>
+      </div>
+
+      <!-- Produkt 8 -->
+      <div class="product">
+        <img src="https://i.imgur.com/GyLO7wS.jpeg" alt="ariu" />
+        <p><span data-lang="sq">Ariu</span><span data-lang="en">bear</span><span data-lang="de">Bär</span></p>
+        <p>30€</p>
+        <button onclick="orderWhatsApp('Ariu', 'https://i.imgur.com/GyLO7wS.jpeg')">
+          <span data-lang="sq">POROSIT TANI</span>
+          <span data-lang="en">ORDER NOW</span>
+          <span data-lang="de">JETZT BESTELLEN</span>
+        </button>
+      </div>
+
+      <!-- Produkt 9 -->
+      <div class="product">
+        <img src="https://i.imgur.com/iTuWU6r.jpeg" alt="Produkt 10 - Dy motrat" />
+        <p><span data-lang="sq">Dy motrat</span><span data-lang="en">Two sisters</span><span data-lang="de">Zwei Schwestern</span></p>
+        <p>40€</p>
+        <button onclick="orderWhatsApp('Dy motrat', 'https://i.imgur.com/iTuWU6r.jpeg')">
+          <span data-lang="sq">POROSIT TANI</span>
+          <span data-lang="en">ORDER NOW</span>
+          <span data-lang="de">JETZT BESTELLEN</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // Funksioni për hapjen e WhatsApp me mesazh të personalizuar
+    function orderWhatsApp(productName, productImageUrl) {
+      const phoneNumber = '38345496430'; // Ndrysho me numrin tënd
+      const message = `Përshëndetje! Dua të porosis: ${productName}. Foto: ${productImageUrl}`;
+      const encodedMessage = encodeURIComponent(message);
+      window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
+    }
+
+    // Gjuha
+    function setLang(lang) {
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.style.display = el.getAttribute('data-lang') === lang ? 'inline' : 'none';
+      });
+    }
+    // Default gjuha në shqip
+    setLang('sq');
+
+    // Show products on button click
+    function showProducts() {
+      document.getElementById('products').style.display = 'block';
+      window.scrollTo(0, document.getElementById('products').offsetTop);
+    }
+
+    // Loader progress animation
+    window.addEventListener('load', () => {
+      const loader = document.getElementById('loader');
+      const progress = document.getElementById('progress');
+      progress.style.width = '100%';
+      setTimeout(() => {
+        loader.style.display = 'none';
+      }, 2000);
+    });
+  </script>
+</body>
+</html>
+<div class="section" id="about-contact">
+  <h2>
+    <span data-lang="sq">RRETH NESH</span>
+    <span data-lang="en">ABOUT US</span>
+    <span data-lang="de">ÜBER UNS</span>
+  </h2>
+  <p>
+    <span data-lang="sq">
+      Përshëndetje! Unë jam Dina, dhe dua t’ju tregoj pak për botën time të vogël plot ngjyra dhe dashuri.
+      Që kur isha e vogël, kam pasur një dashuri të veçantë për krijimtarinë me duar. Me kalimin e viteve, kjo dashuri u shndërrua në një pasion të madh për të thurur. Sot, thurja nuk është vetëm një hobi për mua – është mënyra ime për të shprehur ndjenjat, për të sjellë gëzim dhe për të ndarë pak butësi me botën.
+      Me përkushtim e shumë kujdes, krijoj kukulla të buta e të ëmbla, lepurusha të vegjël që duket sikur do të të përqafojnë, trëndafila që nuk vyshken kurrë dhe shumë personazhe të tjera të imagjinuara nga fijet e leshit dhe duart e mia.
+      Çdo punim që realizoj ka dashuri – jo vetëm për shkak të orëve që i kushtoj, por sepse i bëj me dashuri të vërtetë. Më pëlqen të mendoj që gjithçka që krijoj nuk është vetëm një objekt, por një copëz gëzimi që dikush do ta mbajë afër.
+      Nëse edhe ty të pëlqejnë gjërat e veçanta, të bëra me dorë dhe me zemër, atëherë je në vendin e duhur. Mirë se erdhe në botën time!
+    </span>
+    <span data-lang="en">
+      Hello! I’m Dina, and I want to share a little about my colorful and loving little world.
+      Since I was young, I’ve had a special love for handmade creativity. Over the years, this love turned into a great passion for knitting. Today, knitting is not just a hobby for me – it’s my way to express feelings, bring joy, and share a bit of softness with the world.
+      With dedication and care, I create soft and sweet dolls, little bunnies that seem like they’ll hug you, roses that never fade, and many other characters imagined from wool yarn and my hands.
+      Every piece I make is filled with love – not just because of the hours I spend, but because I make them with true love. I like to think that everything I create is not just an object, but a piece of joy someone will hold close.
+      If you also love special things, handmade with heart, then you are in the right place. Welcome to my world!
+    </span>
+    <span data-lang="de">
+      Hallo! Ich bin Dina und möchte Ihnen ein wenig über meine bunte und liebevolle kleine Welt erzählen.
+      Seit meiner Kindheit habe ich eine besondere Liebe für handgemachte Kreativität. Im Laufe der Jahre hat sich diese Liebe zu einer großen Leidenschaft für das Stricken entwickelt. Heute ist Stricken für mich nicht nur ein Hobby – es ist meine Art, Gefühle auszudrücken, Freude zu bringen und ein wenig Sanftheit mit der Welt zu teilen.
+      Mit Hingabe und Sorgfalt kreiere ich weiche und süße Puppen, kleine Hasen, die einen zu umarmen scheinen, Rosen, die niemals welken, und viele andere Figuren, die aus Wollgarn und meinen Händen entstehen.
+      Jedes Stück, das ich mache, ist voller Liebe – nicht nur wegen der Stunden, die ich darauf verwende, sondern weil ich es mit wahrer Liebe mache. Ich denke gern, dass alles, was ich kreiere, nicht nur ein Objekt ist, sondern ein Stück Freude, das jemand nah bei sich hält.
+      Wenn auch Sie besondere Dinge lieben, handgemacht mit Herz, dann sind Sie hier genau richtig. Willkommen in meiner Welt!
+    </span>
+  </p>
+
+  <h2>
+    <span data-lang="sq">KONTAKT</span>
+    <span data-lang="en">CONTACT</span>
+    <span data-lang="de">KONTAKT</span>
+  </h2>
+  <div class="contact-links">
+    <a href="https://www.facebook.com/share/16uoL5nRFL/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">
+      Facebook
+    </a>
+    <a href="https://www.instagram.com/handmade_diinaa?igsh=MTV0d3IyeTd4cWxpaw==" target="_blank" rel="noopener noreferrer">
+      Instagram
+    </a>
+    <a href="https://t.me/+Ay1GILBzlBwwYTcy" target="_blank" rel="noopener noreferrer">
+      Telegram
+    </a>
+  </div>
+</div>
